@@ -64,6 +64,7 @@ public:
     void drawToken();
     void drawShadow();
     void draw();
+    void drawDoge();
 
     float getX();
     float getY();

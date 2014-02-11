@@ -50,7 +50,7 @@ void LogstalgiaSettings::help(bool extended_help) {
     printf("                             Group together requests where the HOST, URI or response\n");
     printf("                             CODE matches a regular expression\n\n");
 
-    printf("  --paddle-mode MODE         Paddle mode (single, pid, vhost)\n");
+    printf("  --paddle-mode MODE         Paddle mode (single, pid, vhost, doge)\n");
     printf("  --paddle-position POSITION Paddle position as a fraction of the view width\n\n");
 
     printf("  --sync                     Read from STDIN, ignoring entries before now\n\n");
@@ -390,7 +390,10 @@ void LogstalgiaSettings::importLogstalgiaSettings(ConfFile& conffile, ConfSectio
 
         std::string paddle_mode_string = entry->getString();
 
-        if(paddle_mode_string == "single") {
+        if(paddle_mode_string == "doge") {
+            paddle_mode = PADDLE_DOGE;
+        }
+        else if(paddle_mode_string == "single") {
             paddle_mode = PADDLE_SINGLE;
 
         } else if(paddle_mode_string == "pid") {

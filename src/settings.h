@@ -23,9 +23,10 @@
 #include "core/settings.h"
 
 #define PADDLE_NONE   0
-#define PADDLE_SINGLE 1
-#define PADDLE_PID    2
-#define PADDLE_VHOST  3
+#define PADDLE_DOGE   1
+#define PADDLE_SINGLE 2
+#define PADDLE_PID    3
+#define PADDLE_VHOST  4
 
 class LogstalgiaSettings : public SDLAppSettings {
 protected:

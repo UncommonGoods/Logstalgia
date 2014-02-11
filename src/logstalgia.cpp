@@ -1212,7 +1212,12 @@ void Logstalgia::draw(float t, float dt) {
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
 
-    if(settings.paddle_mode != PADDLE_NONE) {
+    if(settings.paddle_mode == PADDLE_DOGE) {
+        for(auto& it: paddles) {
+            it.second->drawDoge();
+        }
+    }
+    else if(settings.paddle_mode != PADDLE_NONE) {
 
         //draw paddles shadows
         for(auto& it: paddles) {
