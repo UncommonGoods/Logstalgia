@@ -328,9 +328,9 @@ GLuint png_texture_load(const char * file_name, int * width, int * height)
 void Paddle::drawDoge() {
     static int heighto = 50;
     static int widtho = 40;
-    GLuint texture = png_texture_load("dogeface.png", NULL, NULL);
+    static GLuint dogeface = png_texture_load("dogeface.png", NULL, NULL);
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindTexture(GL_TEXTURE_2D, dogeface);
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f,1.0f); glVertex2f(pos.x,pos.y-(heighto/2));
         glTexCoord2f(0.0f,0.0f); glVertex2f(pos.x,pos.y+(heighto/2));
