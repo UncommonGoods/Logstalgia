@@ -166,3 +166,20 @@ void RequestBall::drawResponseCode() const {
     font->setColour(vec4(response_colour.x, response_colour.y, response_colour.z, alpha));
     font->draw(msgpos.x, msgpos.y, response_code.c_str());
 }
+
+void RequestBall::drawDogeCode() const {
+    float prog = getProgress();
+
+    float alpha = 1.0f - std::min(1.0f, prog * 2.0f);
+
+    if(alpha<=0.001f) return;
+    
+    float drift = prog * 100.0f;
+
+    if(!le->successful) drift *= -1.0f;
+
+    vec2 msgpos = (vel * drift) + vec2(dest.x-45.0f, dest.y);
+
+    font->setColour(vec4(response_colour.x, response_colour.y, response_colour.z, alpha));
+    font->draw(msgpos.x, msgpos.y, "WOW");
+}

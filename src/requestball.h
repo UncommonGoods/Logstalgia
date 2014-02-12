@@ -53,6 +53,7 @@ public:
     void drawGlow() const;
     void draw() const;
     void drawResponseCode() const;
+    void drawDogeCode() const;
 };
 
 #endif

@@ -1202,7 +1202,12 @@ void Logstalgia::draw(float t, float dt) {
         RequestBall* r = *it;
 
         if(!settings.hide_response_code && r->hasBounced()) {
-            r->drawResponseCode();
+            if(settings.paddle_mode == PADDLE_DOGE) {
+                r->drawDogeCode();
+            }
+            else {
+                r->drawResponseCode();
+            }
         }
     }
 
