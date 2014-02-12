@@ -18,7 +18,7 @@
 #include "requestball.h"
 #include "settings.h"
 
-RequestBall::RequestBall(LogEntry* le, FXFont* font, TextureResource* tex, const vec3& colour, const vec2& pos, const vec2& dest) {
+RequestBall::RequestBall(LogEntry* le, FXFont* font, TextureResource* tex, const vec3& colour, const vec2& pos, const vec2& dest, bool is_doge = false) {
     this->le   = le;
     this->tex  = tex;
     this->font = font;
@@ -39,9 +39,25 @@ RequestBall::RequestBall(LogEntry* le, FXFont* font, TextureResource* tex, const
     float halfsize = size * 0.5f;
     offset = vec2(halfsize, halfsize);
 
-    char buff[16];
-    snprintf(buff, 16, "%s", le->response_code.c_str());
-    response_code = std::string(buff);
+    if(is_doge) {
+        int rand_num = rand() % 9; /* range 0-8 */
+        if(rand_num == 1) {
+            response_code = std::string("WOW");
+        }
+        else if(rand_num == 2) {
+            response_code = std::string("SO LOG");
+        }
+        else {
+            char buff[16];
+            snprintf(buff, 16, "%s", le->response_code.c_str());
+            response_code = std::string("SUCH ") + std::string(buff);
+        }
+    }
+    else {
+        char buff[16];
+        snprintf(buff, 16, "%s", le->response_code.c_str());
+        response_code = std::string(buff);
+    }
 
     response_colour = responseColour();
 }
@@ -165,21 +181,4 @@ void RequestBall::drawResponseCode() const {
     
     font->setColour(vec4(response_colour.x, response_colour.y, response_colour.z, alpha));
     font->draw(msgpos.x, msgpos.y, response_code.c_str());
-}
-
-void RequestBall::drawDogeCode() const {
-    float prog = getProgress();
-
-    float alpha = 1.0f - std::min(1.0f, prog * 2.0f);
-
-    if(alpha<=0.001f) return;
-    
-    float drift = prog * 100.0f;
-
-    if(!le->successful) drift *= -1.0f;
-
-    vec2 msgpos = (vel * drift) + vec2(dest.x-45.0f, dest.y);
-
-    font->setColour(vec4(response_colour.x, response_colour.y, response_colour.z, alpha));
-    font->draw(msgpos.x, msgpos.y, "WOW");
 }

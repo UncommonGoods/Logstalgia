@@ -43,7 +43,7 @@ protected:
 public:
     LogEntry* le;
 
-    RequestBall(LogEntry* le, FXFont* font, TextureResource* tex, const vec3& colour, const vec2& pos, const vec2& dest);
+    RequestBall(LogEntry* le, FXFont* font, TextureResource* tex, const vec3& colour, const vec2& pos, const vec2& dest, bool is_doge);
     ~RequestBall();
 
     bool mouseOver(TextArea& textarea, vec2& mouse);
@@ -53,7 +53,6 @@ public:
     void drawGlow() const;
     void draw() const;
     void drawResponseCode() const;
-    void drawDogeCode() const;
 };
 
 #endif

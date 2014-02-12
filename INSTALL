@@ -26,6 +26,7 @@ Logstalgia requires the following libraries to compile (package names may vary):
     GLM >= 0.9.3 (libglm-dev)
     Boost >= 1.46 (libboost-dev)
     PNG >= 1.2 (libpng12-dev)
+    ALSO libegl1-mesa-dev
 
 2. Building
 ===========
